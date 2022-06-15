@@ -1,10 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-import { Counter } from './features/counter/Counter';
+import logo from "./logo.svg";
+import "./App.css";
+import {Helmet} from "react-helmet";
+import { Counter } from "./features/counter/Counter";
+
 
 function App() {
   return (
     <div className="App">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Student Portal</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+        <meta name="author" content="Creating Student Online Portal" />
+      </Helmet>
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
