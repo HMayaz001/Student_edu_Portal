@@ -19,6 +19,7 @@ function App() {
       <Navbar />
       <Btn />
       <Button variant="outlined">Outlined</Button>
+      
       <StuSummary />
       <Home />
       <EditUser />
