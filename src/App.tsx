@@ -1,15 +1,32 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import { useSelector  } from "react-redux";
+import Home from "./components/pages/Home";
+import EditUser from "./components/pages/EditUser";
+import AddUser from "./components/pages/AddUser";
+import Navbar from "./components/layout/Navbar";
+import Btn from "./components/layout/Btn";
+import StuSummary from "./components/layout/StuSummary";
+//import { BrowserRouter, Switch, Route } from "react-router-dom";
 const initialState = (window as any).initialReduxState;
 // const store = configureStore(initialState);
 
 function App() {
   return (
-    <></>
+    <>
+      
+      <Navbar />
+      <Btn />
+      <StuSummary />
+      <Home />
+      <EditUser />
+      <AddUser />
+    </>
     // <Provider store={store}>
     //   <StudentPortal />
     // </Provider>
+
+    
   );
 }
 
