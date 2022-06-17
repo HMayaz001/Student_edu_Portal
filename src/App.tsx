@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { useSelector  } from "react-redux";
+import { Button } from "@mui/material";
 import Home from "./components/pages/Home";
 import EditUser from "./components/pages/EditUser";
 import AddUser from "./components/pages/AddUser";
@@ -17,6 +18,7 @@ function App() {
       
       <Navbar />
       <Btn />
+      <Button variant="outlined">Outlined</Button>
       <StuSummary />
       <Home />
       <EditUser />

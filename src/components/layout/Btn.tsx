@@ -7,9 +7,6 @@ function Btn() {
             <p>Student Summary</p>
             </div>
 
-            <div>
-            <a className="waves-effect waves-light btn">button</a>
-            </div>
     </div>
   )
 }

@@ -3,7 +3,7 @@ import React from 'react'
 function Navbar() {
   return (
     <div>
-        <h5>Student Portal</h5>
+        <h3>Student Portal</h3>
         <hr />
     </div>
   )
