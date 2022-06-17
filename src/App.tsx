@@ -18,8 +18,10 @@ function App() {
       
       <Navbar />
       <Btn />
-      <Button variant="outlined">Outlined</Button>
-      
+      <Button variant="outlined" >Outlined</Button>
+      <StuSummary />
+      <StuSummary />
+      <StuSummary />
       <StuSummary />
       <Home />
       <EditUser />
