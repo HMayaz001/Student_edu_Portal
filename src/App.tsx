@@ -8,6 +8,7 @@ import AddUser from "./components/pages/AddUser";
 import Navbar from "./components/layout/Navbar";
 import Btn from "./components/layout/Btn";
 import StuSummary from "./components/layout/StuSummary";
+import { Grid } from "@mui/material";
 //import { BrowserRouter, Switch, Route } from "react-router-dom";
 const initialState = (window as any).initialReduxState;
 // const store = configureStore(initialState);
@@ -19,10 +20,21 @@ function App() {
       <Navbar />
       <Btn />
       <Button variant="outlined" >Outlined</Button>
-      <StuSummary />
-      <StuSummary />
-      <StuSummary />
-      <StuSummary />
+      <Grid container>
+        <Grid item xs = {4}>
+        <StuSummary />
+        </Grid>
+        
+        <Grid item xs = {4}>
+        <StuSummary />
+        </Grid>
+
+        <Grid item xs = {4}>
+        <StuSummary />
+        </Grid>
+      
+      </Grid>
+      
       <Home />
       <EditUser />
       <AddUser />
