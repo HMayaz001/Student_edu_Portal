@@ -1,3 +1,4 @@
+export const studentData = 
 [
   { 
     "id": 1,

@@ -6,26 +6,25 @@ import {
   TableBody,
   TableCell,
   TableRow,
-  Paper,
+  Paper
 } from "@mui/material";
-
 function Home(
   Name: string,
   Marks: number,
   Subject: string,
   Grade: string,
-  Email: string,
+  Date: string,
   Action: string
 ) {
-  return { Name, Marks, Subject, Grade, Email, Action };
+  return { Name, Marks, Subject, Grade, Date, Action };
 }
 
 const rows = [
-  Home("Ayaz", 159, "6.0", "24", "0", "k"),
-  Home("Usama", 237, "9.0", "37", "4.3", "k"),
-  Home("Ali", 262, "16.0", "24", "6.0", "k"),
-  Home("Salman", 305, "3.7", "67", "4.3", "k"),
-  Home("Sameed", 356, "16.0", "49", "3.9", "k"),
+  Home("Ayaz", 95, "Calculus", "A", Date(), "abc"),
+  Home("Usama", 75, "Python", "B", Date(), "abc"),
+  Home("Ali", 91, "ITC", "A", Date(), "abc"),
+  Home("Salman", 76, "Data structure", "B", Date(), "abc"),
+  Home("Sameed", 90, "Entrepreneurship", "A", Date(), "abc"),
 ];
 
 export default function DenseTable() {
@@ -50,9 +49,9 @@ export default function DenseTable() {
             >
               <TableCell align="left">{row.Name}</TableCell>
               <TableCell align="right">{row.Marks}</TableCell>
-              <TableCell align="right">{row.Subject}</TableCell>
+              <TableCell align="left">{row.Subject}</TableCell>
               <TableCell align="right">{row.Grade}</TableCell>
-              <TableCell align="right">{row.Email}</TableCell>
+              <TableCell align="right">{row.Date}</TableCell>
               <TableCell align="right">{row.Action}</TableCell>
             </TableRow>
           ))}
