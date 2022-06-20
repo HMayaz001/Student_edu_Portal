@@ -6,7 +6,7 @@ import {
   TableBody,
   TableCell,
   TableRow,
-  Paper
+  Paper,
 } from "@mui/material";
 function Home(
   Name: string,

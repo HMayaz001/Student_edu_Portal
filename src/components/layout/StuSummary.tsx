@@ -9,16 +9,16 @@ import {
 } from "@mui/material";
 
 const bull = (
-    <Box
-      component="span"
-      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    >
-      •
-    </Box>
-  );
-  
-  const card = (
-    <React.Fragment>
+  <Box
+    component="span"
+    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
+  >
+    •
+  </Box>
+);
+
+const card = (
+  <React.Fragment>
     <CardContent>
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         Top Grade
@@ -26,12 +26,9 @@ const bull = (
       <Typography variant="h5" component="div">
         A
       </Typography>
-      
-      
     </CardContent>
-  
   </React.Fragment>
-  );
+);
 
 function StuSummary() {
   return (

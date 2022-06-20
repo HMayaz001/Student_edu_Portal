@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Summary() {
-  return (
-    <></>    
-  )
+  return <></>;
 }
 
 export default Summary;

@@ -1,4 +1,3 @@
-
 // src/state/configureStore.dev.ts
 
 // export default function configureStore(
@@ -10,4 +9,4 @@
 //  return store;
 // }
 
-export{}
+export {};

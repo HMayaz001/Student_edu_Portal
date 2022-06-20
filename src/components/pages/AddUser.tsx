@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function AddUser() {
-  return (
-    <div></div>
-  )
+  return <div></div>;
 }
 
-export default AddUser
+export default AddUser;
