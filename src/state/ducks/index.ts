@@ -11,4 +11,7 @@
 // 	post: postReducer
 // });
 
-export {};
+
+//here i will give access to all the actions in my state folder
+//export * as actionsCreators from "../student/actions"
+export{}
