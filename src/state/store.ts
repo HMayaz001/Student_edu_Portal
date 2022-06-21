@@ -1,32 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import studentReducer from "./ducks/student/reducers";
-import { createStore, applyMiddleware } from 'redux'
+import {rootReducer, rootSaga} from "./ducks";
 import createSagaMiddleware from 'redux-saga'
-//   applyMiddleware(sagaMiddleware)
-// import loggerMiddleware from './middleware/logger'
-
-
-export default configureStore({
-  reducer: {
-    stu: studentReducer,
-  },
-});
-
-import { studentSaga } from './ducks/student/sagas'
-import reducer from './ducks/student/reducers';
 
 const sagaMiddleware = createSagaMiddleware()
-const store = configureStore({
-  reducer: studentReducer,
+export default configureStore({
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(sagaMiddleware)
 
   })
-// const store = createStore(
-//   reducer,
-//   applyMiddleware(sagaMiddleware)
-// )
-// sagaMiddleware.run(Saga)
 
-const action = (type: any) => store.dispatch({type})
+sagaMiddleware.run(rootSaga)
 
