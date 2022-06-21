@@ -37,7 +37,7 @@ export default function DenseTable() {
             <TableCell align="right">Marks</TableCell>
             <TableCell align="right">Subject</TableCell>
             <TableCell align="right">Grade</TableCell>
-            <TableCell align="right">Email</TableCell>
+            <TableCell align="right">Date</TableCell>
             <TableCell align="right">Action</TableCell>
           </TableRow>
         </TableHead>
