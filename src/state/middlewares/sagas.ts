@@ -1,6 +1,4 @@
-// src/state/middlewares/sagas.ts
+import createSagaMiddleware from "redux-saga";
 
-// const sagaMiddleware = createSagaMiddleware();
-// export default sagaMiddleware;
-
-export {};
+const sagaMiddleware = createSagaMiddleware();
+export default sagaMiddleware;

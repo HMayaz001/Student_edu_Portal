@@ -1,14 +1,14 @@
-// src/state/ducks/index.ts
 
-// export interface IApplicationState {
-// 	post: IPostState;
-// }
-// export interface IMetaAction extends MetaAction<TypeConstant, IMeta> {}
-// export interface IReducerAction<TPayload>
-// 	extends Action<TypeConstant>,
-// 		PayloadAction<TypeConstant, TPayload> {}
-// export const rootReducer = combineReducers<IApplicationState>({
-// 	post: postReducer
-// });
+import { combineReducers } from "@reduxjs/toolkit";
+import { all, fork } from "redux-saga/effects";
 
-export {};
+import studentReducer from "./student/reducers";
+import studentSaga from "./student/sagas";
+
+export const rootReducer = combineReducers({
+	student: studentReducer
+});
+
+export function* rootSaga() {
+	yield all([fork(studentSaga)]);
+}
