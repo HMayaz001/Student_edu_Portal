@@ -7,7 +7,14 @@ import {
   TableCell,
   TableRow,
   Paper,
+  Button,
+  IconButton,
+  SvgIcon,
 } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+//const rows = useSelector((state) => state.studentReducer);
+const dispatch = useDispatch();
+
 function Home(
   Name: string,
   Marks: number,
