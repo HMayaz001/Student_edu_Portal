@@ -1,13 +1,14 @@
 import { all, fork, put, takeEvery, takeLatest } from "redux-saga/effects";
-import Api from './path/to/api';
+//import { GET_STUDENT_DATA, RECEIVE_API_DATA } from "./actions";
+//import Api from './path/to/api';
 
-export function* fetchData(action) {
-	try {
-	  const data = yield call(Api.fetchUser, action.payload.url)
-	  yield put({ type: 'FETCH_SUCCEEDED', data })
-	} catch (error) {
-	  yield put({ type: 'FETCH_FAILED', error })
-	}
+function* getStudentData(){
+	
+}
+
+export function* fetchData() {
+	yield true;
   }
 
 
+export default fetchData;
