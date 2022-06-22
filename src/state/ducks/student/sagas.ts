@@ -10,5 +10,4 @@ export function* fetchData() {
 	yield true;
   }
 
-
 export default fetchData;
