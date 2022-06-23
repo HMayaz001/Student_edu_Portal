@@ -11,15 +11,6 @@ import { IStudentRaw, StudentActionTypes } from "./types";
 import { handleFetchStudentsAction } from "./reducers";
 import { fetchStudentData } from "./actions";
 
-// function* handleFetch(action:any ): Generator {
-//   console.log("my saga called")
-// 	try {
-// 		const res: IStudentRaw[] | any = yield call(
-// 			apiCaller,
-// 			action.meta.method,
-// 			action.meta.route
-// 		);
-
 function* handleFetchStudents(): Generator {
   console.log("my saga called");
   const students = yield call(apiCaller, "GET", "students");

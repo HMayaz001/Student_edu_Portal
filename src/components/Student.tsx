@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// const { useEffect } = React;
 import {
   IDispatchToStudents,
   IStudentRaw,
