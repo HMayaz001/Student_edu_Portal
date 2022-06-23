@@ -1,11 +1,11 @@
 import React from "react";
 
-type props = {
+type Iprops = {
   title: string;
 };
 
-const Student: React.FC<props> = ({ title }: props) => {
-  return <></>;
+const Student: React.FC<Iprops> = ({ title }) => {
+  return <div>{title}</div>;
 };
 
 export default Student;

@@ -5,7 +5,7 @@ import { IApplicationState } from "../state/ducks/index";
 import { fetchStudentData } from "../state/ducks/student/actions";
 import { IStudentState } from "../state/ducks/student/types";
 
-const studentContainer = () => {
+const StudentListContainer = () => {
   const dispatch = useDispatch();
 
   const stateToProps: IStudentState = useSelector(
@@ -15,4 +15,14 @@ const studentContainer = () => {
       data: student.data,
     })
   );
+
+  const dispatchToProps = {
+    fetchStudentData: useCallback(
+      () => dispatch(fetchStudentData()),
+      [dispatch]
+    ),
+  };
+  return <StudentList title="" {...stateToProps} {...dispatchToProps} />;
 };
+
+export default StudentListContainer;
