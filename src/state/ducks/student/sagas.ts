@@ -1,9 +1,17 @@
-import { all, call, fork, put, takeEvery, takeLatest } from "redux-saga/effects";
+import {
+  all,
+  call,
+  fork,
+  put,
+  takeEvery,
+  takeLatest,
+} from "redux-saga/effects";
 //import { fetchStudentError, fetchStudentSuccess } from "./actions";
-import { GET_USERS_FETCH, GET_USERS_SUCCESS } from "./actions";
+//import { GET_USERS_FETCH, GET_USERS_SUCCESS } from "./actions";
 import apiCaller from "../../utils/apiCaller";
 import { IStudentRaw, StudentActionTypes } from "./types";
-import * as screen from "./reducers";
+import { handleFetchStudentsAction } from "./reducers";
+import { fetchStudentData } from "./actions";
 
 // function* handleFetch(action:any ): Generator {
 //   console.log("my saga called")
@@ -14,20 +22,14 @@ import * as screen from "./reducers";
 // 			action.meta.route
 // 		);
 
-// 		yield put(fetchStudentSuccess(res));
-// 	} catch (err) {
-// 		if (err instanceof Error) {
-// 			yield put(fetchStudentError(err.stack!));
-// 		} else {
-// 			yield put(fetchStudentError("An unknown error occured."));
-// 		}
-// 	}
-// }
-
-
+function* handleFetchStudents(): Generator {
+  console.log("my saga called");
+  const students = yield call(apiCaller, "GET", "students");
+  yield put(handleFetchStudentsAction(students));
+}
 
 function* studentSaga() {
-	yield takeLatest('users/StudentActionTypes.ADD_DATA', handleFetch);
+  yield takeLatest(StudentActionTypes.FETCH_STUDENTS, handleFetchStudents);
 }
 
 export default studentSaga;
