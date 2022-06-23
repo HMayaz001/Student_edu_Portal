@@ -1,13 +1,12 @@
 import { IReducerAction } from "..";
 
 export interface IStudentState {
-  readonly data: IStudentRaw[];
+  readonly list: IStudentRaw[];
   readonly loading: boolean;
   readonly errors: [];
 }
 export type ApiResponse = Record<string, any>;
 export interface IStudentRaw extends ApiResponse {
-  id: number;
   name: string;
   marks: string;
   subject: number;

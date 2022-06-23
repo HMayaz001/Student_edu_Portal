@@ -12,17 +12,16 @@ const StudentListContainer = () => {
     ({ student }: IApplicationState) => ({
       loading: student.loading,
       errors: student.errors,
-      data: student.data,
+      list: student.list,
     })
   );
-
   const dispatchToProps = {
     fetchStudentData: useCallback(
       () => dispatch(fetchStudentData()),
       [dispatch]
     ),
   };
-  return <StudentList title="" {...stateToProps} {...dispatchToProps} />;
+  return <StudentList {...stateToProps} {...dispatchToProps} />;
 };
 
 export default StudentListContainer;

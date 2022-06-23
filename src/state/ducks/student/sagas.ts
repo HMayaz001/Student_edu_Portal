@@ -6,8 +6,6 @@ import {
   takeEvery,
   takeLatest,
 } from "redux-saga/effects";
-//import { fetchStudentError, fetchStudentSuccess } from "./actions";
-//import { GET_USERS_FETCH, GET_USERS_SUCCESS } from "./actions";
 import apiCaller from "../../utils/apiCaller";
 import { IStudentRaw, StudentActionTypes } from "./types";
 import { handleFetchStudentsAction } from "./reducers";

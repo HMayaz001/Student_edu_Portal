@@ -2,19 +2,15 @@ import React from "react";
 import "./App.css";
 import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
-import Home from "./components/pages/Home";
-import EditUser from "./components/pages/EditUser";
-import AddUser from "./components/pages/AddUser";
 import Navbar from "./components/layout/Navbar";
 import Btn from "./components/layout/Btn";
 import StuSummary from "./components/layout/StuSummary";
 import { Grid } from "@mui/material";
 import Icon from "@mui/material/Icon";
 import { border } from "@mui/system";
+import StudentListContainer from "./containers/StudentListContainer";
 
-//import { BrowserRouter, Switch, Route } from "react-router-dom";
 const initialState = (window as any).initialReduxState;
-// const store = configureStore(initialState);
 
 function App() {
   const studentList = useSelector((state) => {});
@@ -69,9 +65,7 @@ function App() {
           <StuSummary />
         </Grid>
       </Grid>
-      <Home />
-      <EditUser />
-      <AddUser />
+      <StudentListContainer />
     </>
   );
 }

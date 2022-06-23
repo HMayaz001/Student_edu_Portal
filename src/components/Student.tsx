@@ -9,7 +9,7 @@ import Student from "./StudentList";
 
 type AllProps = IStudentState & IDispatchToStudents;
 
-const StudentList: React.FC<AllProps> = ({ data, fetchStudents }: AllProps) => {
+const StudentList: React.FC<AllProps> = ({ list, fetchStudents }: AllProps) => {
   useEffect(() => {
     fetchStudents();
   }, [fetchStudents]);

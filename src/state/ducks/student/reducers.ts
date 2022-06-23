@@ -6,32 +6,12 @@ import { IStudentRaw, StudentActionTypes } from "./types";
 
 export const studentSlice = createSlice({
   name: "students",
-  initialState: [
-    {
-      id: 0,
-      name: "",
-      marks: "",
-      subject: "",
-      grade: "",
-      date: "",
-    },
-  ],
+  initialState: { list: [] },
   reducers: {
     handleFetchStudentsAction: (state, action) => {
-      state = action.payload;
-      return state;
+      return { ...state, list: action.payload };
     },
-
-    addData: (state, action) => {
-      return state;
-    },
-
-    editData: (state, action) => {},
-
-    deleteData: (state, action) => {},
   },
 });
-
-// export const {setData, addData, editData, deleteData} = studentSlice.actions;
 export const { handleFetchStudentsAction } = studentSlice.actions;
 export default studentSlice.reducer;
