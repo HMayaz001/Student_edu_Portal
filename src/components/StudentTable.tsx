@@ -34,8 +34,29 @@ export default function StudentTable({ list, fetchStudentData }: IProps) {
               <TableCell align='right'>{row.marks}</TableCell>
               <TableCell align='right'>{row.subject}</TableCell>
               <TableCell align='center'>
-                {/* <GradeTableCell grade={row.grade} /> */}
-                <Box sx={row.grade === 'A' ? { color: 'red', background: 'yellow' } : { color: 'white', background: 'gray' }}>
+                <Box
+                  sx={
+                    row.grade === 'A'
+                      ? {
+                          color: '#febd45',
+                          background: '#FFF7F5',
+                          borderRadius: '8px',
+                          width: '110.33px',
+                          height: '24.54px',
+                          textAlign: 'center',
+                          padding: '4px 0 0 0 ',
+                        }
+                      : {
+                          color: '#e54a4a',
+                          background: '#FF6897',
+                          borderRadius: '8px',
+                          width: '110.33px',
+                          height: '24.54px',
+                          textAlign: 'center',
+                          padding: '4px 0 0 0 ',
+                        }
+                  }
+                >
                   {row.grade}
                 </Box>
               </TableCell>
