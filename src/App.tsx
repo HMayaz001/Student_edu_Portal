@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button, Grid, Icon } from '@mui/material';
 import Navbar from './components/layout/Navbar';
-import Btn from './components/layout/Btn';
-import StuSummary from './components/layout/StuSummary';
+import StudentSummary from './components/layout/StudentSummary';
 import StudentListContainer from './containers/StudentTableContainer';
 import './App.css';
 
@@ -12,7 +11,7 @@ function App() {
       <Navbar />
       <Grid container direction='row' justifyContent='space-around' alignItems='center'>
         <Grid item xs={6}>
-          <Btn />
+          Student Summary
         </Grid>
         <Grid item>
           <Button
@@ -33,19 +32,19 @@ function App() {
 
       <Grid container direction='row' justifyContent='space-around' alignItems='center'>
         <Grid item xs={2}>
-          <StuSummary />
+          <StudentSummary />
         </Grid>
 
         <Grid item xs={2}>
-          <StuSummary />
+          <StudentSummary />
         </Grid>
 
         <Grid item xs={2}>
-          <StuSummary />
+          <StudentSummary />
         </Grid>
 
         <Grid item xs={2}>
-          <StuSummary />
+          <StudentSummary />
         </Grid>
       </Grid>
       <StudentListContainer />
