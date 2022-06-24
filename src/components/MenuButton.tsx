@@ -10,8 +10,6 @@ const ITEM_HEIGHT = 48;
 
 function MenuButton() {
   const [anchorEl, setAnchorEl] = useState<any>(null);
-
-  const [state, setstate] = useState<null>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);

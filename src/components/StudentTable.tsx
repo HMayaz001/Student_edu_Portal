@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
-import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
-import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, Paper } from '@mui/material';
+import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, Paper, Box } from '@mui/material';
 import { IStudent } from '../state/ducks/student/types';
-import moment from 'moment';
-import StudentTableStyle from './StudentGradeStyle';
 import MenuButton from './MenuButton';
+import { dateFormat } from '../utils/helper';
 
 type IProps = {
   list: IStudent[];
@@ -34,11 +32,14 @@ export default function StudentTable({ list, fetchStudentData }: IProps) {
             <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell align='left'>{row.name}</TableCell>
               <TableCell align='right'>{row.marks}</TableCell>
-              <TableCell>
-                <StudentTableStyle grade={row.grade} />
+              <TableCell align='right'>{row.subject}</TableCell>
+              <TableCell align='center'>
+                {/* <GradeTableCell grade={row.grade} /> */}
+                <Box sx={row.grade === 'A' ? { color: 'red', background: 'yellow' } : { color: 'white', background: 'gray' }}>
+                  {row.grade}
+                </Box>
               </TableCell>
-              <TableCell align='right'>{row.grade}</TableCell>
-              <TableCell align='right'>{moment().format('MMMM Do YYYY, h:mm:ss a')}</TableCell>
+              <TableCell align='right'>{dateFormat()}</TableCell>
               <TableCell align='right'>
                 <MenuButton />
               </TableCell>
