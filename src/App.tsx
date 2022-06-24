@@ -5,8 +5,7 @@ import { Button } from "@mui/material";
 import Navbar from "./components/layout/Navbar";
 import Btn from "./components/layout/Btn";
 import StuSummary from "./components/layout/StuSummary";
-import { Grid } from "@mui/material";
-import Icon from "@mui/material/Icon";
+import { Grid, Icon } from "@mui/material";
 import { border } from "@mui/system";
 import StudentListContainer from "./containers/StudentListContainer";
 
