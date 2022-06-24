@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import StudentList from "../components/StudentList";
+import StudentTable from "../components/StudentTable";
 import { IApplicationState } from "../state/ducks/index";
 import { fetchStudentData } from "../state/ducks/student/actions";
 import { IStudentState } from "../state/ducks/student/types";
@@ -10,8 +10,6 @@ const StudentListContainer = () => {
 
   const stateToProps: IStudentState = useSelector(
     ({ student }: IApplicationState) => ({
-      loading: student.loading,
-      errors: student.errors,
       list: student.list,
     })
   );
@@ -21,7 +19,7 @@ const StudentListContainer = () => {
       [dispatch]
     ),
   };
-  return <StudentList {...stateToProps} {...dispatchToProps} />;
+  return <StudentTable {...stateToProps} {...dispatchToProps} />;
 };
 
 export default StudentListContainer;

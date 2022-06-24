@@ -1,12 +1,10 @@
-import { IReducerAction } from "..";
+import { IReducerAction } from '..';
 
 export interface IStudentState {
-  readonly list: IStudentRaw[];
-  readonly loading: boolean;
-  readonly errors: [];
+  readonly list: IStudent[];
 }
 export type ApiResponse = Record<string, any>;
-export interface IStudentRaw extends ApiResponse {
+export interface IStudent extends ApiResponse {
   name: string;
   marks: string;
   subject: number;
@@ -15,9 +13,9 @@ export interface IStudentRaw extends ApiResponse {
 }
 
 export const StudentActionTypes = {
-  FETCH_STUDENTS: "students/FETCH_STUDENTS",
+  FETCH_STUDENTS: 'students/FETCH_STUDENTS',
 };
 
 export interface IDispatchToStudents {
-  fetchStudents: () => IReducerAction<IStudentRaw>;
+  fetchStudents: () => IReducerAction<IStudent>;
 }

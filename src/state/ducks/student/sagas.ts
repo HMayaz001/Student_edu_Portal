@@ -1,19 +1,11 @@
-import {
-  all,
-  call,
-  fork,
-  put,
-  takeEvery,
-  takeLatest,
-} from "redux-saga/effects";
-import apiCaller from "../../utils/apiCaller";
-import { IStudentRaw, StudentActionTypes } from "./types";
-import { handleFetchStudentsAction } from "./reducers";
-import { fetchStudentData } from "./actions";
+import { call, put, takeLatest } from 'redux-saga/effects';
+import apiCaller from '../../utils/apiCaller';
+import { IStudent, StudentActionTypes } from './types';
+import { handleFetchStudentsAction } from './reducers';
 
 function* handleFetchStudents(): Generator {
-  console.log("my saga called");
-  const students = yield call(apiCaller, "GET", "students");
+  const students = (yield call(apiCaller, 'GET', 'students')) as IStudent[];
+
   yield put(handleFetchStudentsAction(students));
 }
 

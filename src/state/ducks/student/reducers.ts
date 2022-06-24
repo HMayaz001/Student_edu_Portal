@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { Action, PayloadAction, TypeConstant } from "typesafe-actions";
-import { IStudentRaw, StudentActionTypes } from "./types";
+import { createSlice } from '@reduxjs/toolkit';
+import { Action, PayloadAction, TypeConstant } from 'typesafe-actions';
+import { IStudent, StudentActionTypes } from './types';
 
 export const studentSlice = createSlice({
-  name: "students",
+  name: 'students',
   initialState: { list: [] },
   reducers: {
     handleFetchStudentsAction: (state, action) => {
