@@ -3,6 +3,8 @@ import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, Paper } from '@mui/material';
 import { IStudent } from '../state/ducks/student/types';
 import moment from 'moment';
+import StudentTableStyle from './StudentGradeStyle';
+import MenuButton from './MenuButton';
 
 type IProps = {
   list: IStudent[];
@@ -32,11 +34,13 @@ export default function StudentTable({ list, fetchStudentData }: IProps) {
             <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell align='left'>{row.name}</TableCell>
               <TableCell align='right'>{row.marks}</TableCell>
-              <TableCell align='right'>{row.subject}</TableCell>
+              <TableCell>
+                <StudentTableStyle grade={row.grade} />
+              </TableCell>
               <TableCell align='right'>{row.grade}</TableCell>
-              <TableCell align='right'>{moment().format('LTS')}</TableCell>
+              <TableCell align='right'>{moment().format('MMMM Do YYYY, h:mm:ss a')}</TableCell>
               <TableCell align='right'>
-                <MoreVertOutlinedIcon fontSize='small' color='action' />
+                <MenuButton />
               </TableCell>
             </TableRow>
           ))}
