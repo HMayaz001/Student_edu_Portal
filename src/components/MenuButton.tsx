@@ -45,7 +45,7 @@ function MenuButton() {
           },
         }}
       >
-        {options.map((option) => (
+        {options.map((option: string) => (
           <MenuItem key={option} onClick={handleClose}>
             {option}
           </MenuItem>
