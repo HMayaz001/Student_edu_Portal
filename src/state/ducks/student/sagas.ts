@@ -1,13 +1,16 @@
-import { all, fork, put, takeEvery, takeLatest } from "redux-saga/effects";
-//import { GET_STUDENT_DATA, RECEIVE_API_DATA } from "./actions";
-//import Api from './path/to/api';
+import { call, put, takeLatest } from 'redux-saga/effects';
+import apiCaller from '../../utils/apiCaller';
+import { IStudent, StudentActionTypes } from './types';
+import { handleFetchStudentsAction } from './reducers';
 
-function* getStudentData(){
-	
+function* handleFetchStudents(): Generator {
+  const students = (yield call(apiCaller, 'GET', 'students')) as IStudent[];
+
+  yield put(handleFetchStudentsAction(students));
 }
 
-export function* fetchData() {
-	yield true;
-  }
+function* studentSaga() {
+  yield takeLatest(StudentActionTypes.FETCH_STUDENTS, handleFetchStudents);
+}
 
-export default fetchData;
+export default studentSaga;

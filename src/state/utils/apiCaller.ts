@@ -5,7 +5,7 @@ export default function apiCaller<T>(
   path: string,
   data?: any
 ): Promise<T[] | null> {
-  return fetch(process.env.REACT_APP_JSON_PLACEHOLDER + path, {
+  return fetch(process.env.REACT_APP_API_BASE + path, {
     method,
     headers: {
       Accept: "application/json",

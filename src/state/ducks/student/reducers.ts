@@ -1,25 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { studentData } from "../../../state/ducks/student/__tests__/__mockData__/studentData";
+import { createSlice } from '@reduxjs/toolkit';
+import { Action, PayloadAction, TypeConstant } from 'typesafe-actions';
+import { IStudent, StudentActionTypes } from './types';
 
 export const studentSlice = createSlice({
-  name: "users", 
-  initialState: {
-    value: studentData,
-  },
+  name: 'students',
+  initialState: { list: [] },
   reducers: {
-
-      addData: (state, action) => {
-
-      },
-
-      editData: (state, action) => {
-
-      },
-
-      deleteData: (state, action) => {
-
-      },
-  }
-})
-  
+    handleFetchStudentsAction: (state, action) => {
+      return { ...state, list: action.payload };
+    },
+  },
+});
+export const { handleFetchStudentsAction } = studentSlice.actions;
 export default studentSlice.reducer;
