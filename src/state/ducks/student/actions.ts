@@ -4,5 +4,5 @@ import { IStudent, StudentActionTypes } from './types';
 export const fetchStudentData = () =>
   action(StudentActionTypes.FETCH_STUDENTS, [], {
     method: 'get',
-    route: '/students',
+    route: '/StudentForm',
   });

@@ -4,7 +4,7 @@ import { IStudent, StudentActionTypes } from './types';
 import { handleFetchStudentsAction } from './reducers';
 
 function* handleFetchStudents(): Generator {
-  const students = (yield call(apiCaller, 'GET', 'students')) as IStudent[];
+  const students = (yield call(apiCaller, 'GET', 'StudentForm')) as IStudent[];
 
   yield put(handleFetchStudentsAction(students));
 }
