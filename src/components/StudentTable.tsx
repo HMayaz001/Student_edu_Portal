@@ -28,7 +28,7 @@ export default function StudentTable({ list, fetchStudentData }: IProps) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {list.map((row: any) => (
+          {list.map((row: IStudent) => (
             <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell align='left'>{row.name}</TableCell>
               <TableCell align='right'>{row.marks}</TableCell>

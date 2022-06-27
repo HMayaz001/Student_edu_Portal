@@ -3,6 +3,7 @@ import { Button, Grid, Icon } from '@mui/material';
 import Navbar from './components/layout/Navbar';
 import StudentSummary from './components/layout/StudentSummary';
 import StudentListContainer from './containers/StudentTableContainer';
+// import Forms from './components/Forms';
 import './App.css';
 
 function App() {
@@ -19,12 +20,15 @@ function App() {
             style={{
               borderRadius: 5,
               backgroundColor: '#ffffff',
-              padding: '4px 8px',
+              padding: '4px 15px',
+              font: 'Poppins normal 500 14px',
+              lineHeight: ' 21px',
+              margin: '12px',
               fontSize: '10px',
               color: '#343744',
             }}
           >
-            <Icon sx={{ fontSize: 10 }}>add_circle</Icon>
+            {'+'}
             Add Data
           </Button>
         </Grid>
@@ -47,6 +51,8 @@ function App() {
           <StudentSummary />
         </Grid>
       </Grid>
+      {/* <Forms /> */}
+
       <StudentListContainer />
     </>
   );
