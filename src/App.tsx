@@ -51,7 +51,6 @@ function App() {
           <StudentSummary />
         </Grid>
       </Grid>
-      {/* <Forms /> */}
 
       <StudentListContainer />
     </>
