@@ -3,7 +3,7 @@ import { Button, Grid, Icon } from '@mui/material';
 import Navbar from './components/layout/Navbar';
 import StudentSummary from './components/layout/StudentSummary';
 import StudentListContainer from './containers/StudentTableContainer';
-// import Forms from './components/Forms';
+
 import './App.css';
 
 function App() {
@@ -51,7 +51,6 @@ function App() {
           <StudentSummary />
         </Grid>
       </Grid>
-      {/* <Forms /> */}
 
       <StudentListContainer />
     </>
