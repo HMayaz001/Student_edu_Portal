@@ -43,7 +43,6 @@ export default function StudentTable({ list, fetchStudentData }: IProps) {
                           borderRadius: '8px',
                           width: '110.33px',
                           height: '24.54px',
-                          textAlign: 'center',
                           padding: '4px 0 0 0 ',
                         }
                       : {
@@ -52,7 +51,6 @@ export default function StudentTable({ list, fetchStudentData }: IProps) {
                           borderRadius: '8px',
                           width: '110.33px',
                           height: '24.54px',
-                          textAlign: 'center',
                           padding: '4px 0 0 0 ',
                         }
                   }
@@ -60,7 +58,7 @@ export default function StudentTable({ list, fetchStudentData }: IProps) {
                   {row.grade}
                 </Box>
               </TableCell>
-              <TableCell align='right'>{dateFormat()}</TableCell>
+              <TableCell align='right'>{dateFormat(row.date)}</TableCell>
               <TableCell align='right'>
                 <MenuButton />
               </TableCell>
