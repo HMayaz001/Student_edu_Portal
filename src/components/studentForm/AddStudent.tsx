@@ -8,7 +8,8 @@ import { Input as AntdInput } from 'antd';
 import { fetchStudentData } from '../../state/ducks/student/actions';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './FormValidation';
-import GradeData from '../../utils/data';
+import GradeData from '../../utils/data/GradeData';
+import SubjectData from '../../utils/data/SubjectData';
 import * as yup from 'yup';
 
 import './formStyle.css';
@@ -28,16 +29,7 @@ const AddForm = () => {
       <label>Subject</label>
       <Controller
         name='subject'
-        render={({ field }) => (
-          <Select
-            {...field}
-            options={[
-              { value: 'english', label: 'English' },
-              { value: 'math', label: 'Math' },
-              { value: 'science', label: 'Science' },
-            ]}
-          />
-        )}
+        render={({ field }) => <Select {...field} options={SubjectData} />}
         control={control}
         defaultValue=''
       />
