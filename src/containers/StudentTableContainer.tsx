@@ -12,9 +12,12 @@ const StudentListContainer = () => {
     list: student.list,
   }));
   const dispatchToProps = {
-    fetchStudentData: useCallback(() => dispatch(fetchStudentData()), [dispatch]),
+    fetchStudentData: useCallback(() => dispatch(fetchStudentData(data)), [dispatch]),
   };
   return <StudentTable {...stateToProps} {...dispatchToProps} />;
 };
 
 export default StudentListContainer;
+function data(data: any): { type: string; payload: never[]; meta: { method: string; route: string } } {
+  throw new Error('Function not implemented.');
+}

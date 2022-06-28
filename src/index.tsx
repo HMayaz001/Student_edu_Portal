@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import { Provider } from 'react-redux';
 import store from './state/store';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AddStudent from './components/studentForm/AddStudent';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <Routes>
+          <Route path='/' element={<App />}></Route>
+          <Route path='/AddStudent' element={<AddStudent />}></Route>
+        </Routes>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

@@ -85,13 +85,6 @@
     letter-spacing: 10px;
   }
   
-  button {
-    display: block;
-    appearance: none;
-    border-radius: 4px;
-    width: 100%;
-  }
-  
   input[type="submit"]:hover {
     background: #bf1650;
   }

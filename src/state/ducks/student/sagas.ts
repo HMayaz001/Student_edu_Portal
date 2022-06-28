@@ -3,8 +3,8 @@ import apiCaller from '../../utils/apiCaller';
 import { IStudent, StudentActionTypes } from './types';
 import { handleFetchStudentsAction } from './reducers';
 
-function* handleFetchStudents(): Generator {
-  const students = (yield call(apiCaller, 'GET', 'StudentForm')) as IStudent[];
+function* handleFetchStudents(data: any): Generator {
+  const students = (yield call(apiCaller, 'GET', 'students')) as IStudent[];
 
   yield put(handleFetchStudentsAction(students));
 }
