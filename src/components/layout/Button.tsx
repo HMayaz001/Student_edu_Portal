@@ -1,11 +1,11 @@
-import { Button, Grid, Icon } from '@mui/material';
+import { Button as MUIButton, Grid, Icon } from '@mui/material';
 import React from 'react';
 
-function AddButton({ onClick }: any) {
+function Button({ onClick }: any) {
   return (
     <div>
       <Grid item>
-        <Button
+        <MUIButton
           onClick={onClick}
           variant='outlined'
           style={{
@@ -21,10 +21,10 @@ function AddButton({ onClick }: any) {
         >
           {'+'}
           Add Data
-        </Button>
+        </MUIButton>
       </Grid>
     </div>
   );
 }
 
-export default AddButton;
+export default Button;

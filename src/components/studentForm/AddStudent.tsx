@@ -3,21 +3,34 @@ import ReactDOM from 'react-dom';
 import Select from 'react-select';
 import { useForm, Controller } from 'react-hook-form';
 import { Input, Button } from '@mui/material';
-import Checkbox from '@mui/material/Checkbox';
-import { Input as AntdInput } from 'antd';
-import { fetchStudentData } from '../../state/ducks/student/actions';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './FormValidation';
 import GradeData from '../../utils/data/GradeData';
 import SubjectData from '../../utils/data/SubjectData';
 import * as yup from 'yup';
+import { IStudent } from '../../state/ducks/student/types';
 
 import './formStyle.css';
+import { useDispatch } from 'react-redux';
+import moment from 'moment';
 
-const AddForm = () => {
+type IProps = {
+  AddStudentData: (data: IStudent) => void;
+};
+
+const AddStudent = ({ AddStudentData }: IProps) => {
   const { control, handleSubmit } = useForm();
 
-  const onSubmit = (data: any) => fetchStudentData(data);
+  const onSubmit = (data: any) => {
+    let student = {
+      name: data.name,
+      marks: data.marks,
+      subject: data.subject.value,
+      grade: data.grads.value,
+      date: moment().toISOString(),
+    };
+    return AddStudentData(student);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -33,7 +46,6 @@ const AddForm = () => {
         control={control}
         defaultValue=''
       />
-      <Controller name='Checkbox' control={control} render={({ field }) => <Checkbox {...field} />} />
 
       <label>Grads</label>
       <Controller
@@ -43,11 +55,11 @@ const AddForm = () => {
         defaultValue=''
       />
 
-      <Button variant='contained' color='success'>
+      <Button variant='contained' color='success' type='submit'>
         Add
       </Button>
     </form>
   );
 };
 
-export default AddForm;
+export default AddStudent;

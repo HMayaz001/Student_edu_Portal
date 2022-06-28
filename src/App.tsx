@@ -1,6 +1,5 @@
 import React from 'react';
-import AddButton from './components/layout/AddButton';
-import { Button, Grid, Icon } from '@mui/material';
+import { Button as MUIButton, Grid, Icon } from '@mui/material';
 import Navbar from './components/layout/Navbar';
 import StudentSummary from './components/layout/StudentSummary';
 import StudentListContainer from './containers/StudentTableContainer';
@@ -9,6 +8,7 @@ import ReactDOM from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 
 import './App.css';
+import Button from './components/layout/Button';
 
 function App() {
   let navigate = useNavigate();
@@ -24,7 +24,7 @@ function App() {
         <Grid item xs={6}>
           Student Summary
         </Grid>
-        <AddButton onClick={handleClick} />
+        <Button onClick={handleClick} />
       </Grid>
       <Grid container direction='row' justifyContent='space-around' alignItems='center'>
         <Grid item xs={2}>

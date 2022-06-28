@@ -36,7 +36,7 @@ export default function StudentTable({ list, fetchStudentData }: IProps) {
               <TableCell align='center'>
                 <Box
                   sx={
-                    row.grade === 'A'
+                    row?.meta?.data?.grads.label === 'A'
                       ? {
                           color: '#febd45',
                           background: '#FFF7F5',

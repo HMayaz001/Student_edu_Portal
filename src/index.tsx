@@ -6,6 +6,7 @@ import store from './state/store';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AddStudent from './components/studentForm/AddStudent';
 import App from './App';
+import StudentFormContainer from './containers/StudentFormContainer';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,7 +14,7 @@ ReactDOM.render(
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<App />}></Route>
-          <Route path='/AddStudent' element={<AddStudent />}></Route>
+          <Route path='/AddStudent' element={<StudentFormContainer />}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>

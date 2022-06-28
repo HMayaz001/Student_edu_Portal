@@ -10,14 +10,13 @@ const StudentListContainer = () => {
 
   const stateToProps: IStudentState = useSelector(({ student }: IApplicationState) => ({
     list: student.list,
+    data: student.data,
   }));
   const dispatchToProps = {
-    fetchStudentData: useCallback(() => dispatch(fetchStudentData(data)), [dispatch]),
+    fetchStudentData: useCallback(() => dispatch(fetchStudentData()), [dispatch]),
   };
+
   return <StudentTable {...stateToProps} {...dispatchToProps} />;
 };
 
 export default StudentListContainer;
-function data(data: any): { type: string; payload: never[]; meta: { method: string; route: string } } {
-  throw new Error('Function not implemented.');
-}
