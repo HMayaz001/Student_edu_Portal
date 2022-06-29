@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import AddStudent from '../components/studentForm/AddStudent';
+import AddStudent from '../components/form/AddStudent';
 import { IApplicationState } from '../state/ducks/index';
 import { AddStudentData } from '../state/ducks/student/actions';
 import { IStudentState } from '../state/ducks/student/types';

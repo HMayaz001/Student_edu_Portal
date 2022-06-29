@@ -5,7 +5,7 @@ import { handleFetchStudentsAction } from './reducers';
 
 function* handleAddStudent(data: any): Generator {
   const addStudent = (yield call(apiCaller, 'POST', 'students', data.meta.data)) as IStudent;
-  console.log(addStudent);
+
   yield put(handleFetchStudentsAction(addStudent));
 }
 function* handleFetchStudents(data: any): Generator {

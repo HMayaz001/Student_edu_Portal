@@ -6,8 +6,9 @@ export const studentSlice = createSlice({
   name: 'students',
   initialState: { list: [] },
   reducers: {
-    handleFetchStudentsAction: (state, action) => {
-      return { ...state, list: action.payload };
+    handleFetchStudentsAction: (state: any, action: any) => {
+      const checkState = { ...state, list: action.payload };
+      return checkState;
     },
   },
 });

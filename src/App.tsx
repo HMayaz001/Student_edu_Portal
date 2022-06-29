@@ -3,7 +3,7 @@ import { Button as MUIButton, Grid, Icon } from '@mui/material';
 import Navbar from './components/layout/Navbar';
 import StudentSummary from './components/layout/StudentSummary';
 import StudentListContainer from './containers/StudentTableContainer';
-import AddStudent from './components/studentForm/AddStudent';
+import AddStudent from './components/form/AddStudent';
 import ReactDOM from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,16 +1,14 @@
 import { IReducerAction } from '..';
 
 export interface IStudentState {
-  data: any;
   list: IStudent[];
 }
 export type ApiResponse = Record<string, any>;
 export interface IStudent extends ApiResponse {
   name: string;
-  marks: string;
-  subject: number;
+  marks: number;
+  subject: any;
   grade: string;
-  date: string;
 }
 
 export const StudentActionTypes = {

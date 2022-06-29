@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, Paper, Box } from '@mui/material';
-import { IStudent } from '../state/ducks/student/types';
-import MenuButton from './MenuButton';
-import { dateFormat } from '../utils/helper';
+import { IStudent } from '../../state/ducks/student/types';
+import MenuButton from '../MenuButton';
+import { dateFormat } from '../../utils/helper';
 
 type IProps = {
   list: IStudent[];

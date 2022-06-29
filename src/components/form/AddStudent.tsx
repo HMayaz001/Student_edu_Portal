@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Select from 'react-select';
 import { useForm, Controller } from 'react-hook-form';
-import { Input, Button } from '@mui/material';
+import { Input, Button, Autocomplete, TextField } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from './FormValidation';
+import { studentFormSchema } from './validation';
 import GradeData from '../../utils/data/GradeData';
 import SubjectData from '../../utils/data/SubjectData';
 import * as yup from 'yup';
 import { IStudent } from '../../state/ducks/student/types';
-
 import './formStyle.css';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
@@ -19,14 +18,11 @@ type IProps = {
 };
 
 const AddStudent = ({ AddStudentData }: IProps) => {
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit, setValue } = useForm();
 
-  const onSubmit = (data: any) => {
+  const onSubmit: any = (data: IStudent) => {
     let student = {
-      name: data.name,
-      marks: data.marks,
-      subject: data.subject.value,
-      grade: data.grads.value,
+      ...data,
       date: moment().toISOString(),
     };
     return AddStudentData(student);
@@ -40,23 +36,32 @@ const AddStudent = ({ AddStudentData }: IProps) => {
       <Controller render={({ field }) => <Input {...field} />} name='marks' control={control} defaultValue='' />
 
       <label>Subject</label>
-      <Controller
-        name='subject'
-        render={({ field }) => <Select {...field} options={SubjectData} />}
-        control={control}
-        defaultValue=''
+
+      <Autocomplete
+        id='subject'
+        options={SubjectData}
+        sx={{ width: 300 }}
+        getOptionLabel={(option) => option.label}
+        onChange={(e, newValue: any) => {
+          setValue('subject', newValue.value);
+        }}
+        renderInput={(params: any) => <TextField {...params} label='Subject' />}
       />
 
       <label>Grads</label>
-      <Controller
-        name='grads'
-        render={({ field }) => <Select {...field} options={GradeData} />}
-        control={control}
-        defaultValue=''
+      <Autocomplete
+        id='grade'
+        options={GradeData}
+        sx={{ width: 300 }}
+        getOptionLabel={(option) => option.label}
+        onChange={(e, newValue: any) => {
+          setValue('grade', newValue.value);
+        }}
+        renderInput={(params: any) => <TextField {...params} label='Grade' />}
       />
 
       <Button variant='contained' color='success' type='submit'>
-        Add
+        Add Record
       </Button>
     </form>
   );
