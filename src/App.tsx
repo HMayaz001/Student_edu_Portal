@@ -14,7 +14,7 @@ function App() {
   let navigate = useNavigate();
 
   const handleClick = async () => {
-    navigate('/AddStudent', { state: '' });
+    navigate('/AddStudent');
   };
 
   return (
