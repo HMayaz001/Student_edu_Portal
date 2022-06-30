@@ -1,10 +1,10 @@
 import * as yup from 'yup';
 export const studentFormSchema = yup
-  .object({
-    name: yup.string().required(),
-    marks: yup.number().positive().integer().required(),
-    sunject: yup.string().required(),
-    subject: yup.string().required(),
-    grade: yup.string().required(),
+  .object()
+  .shape({
+    name: yup.string().required('name is required'),
+    marks: yup.number().positive().integer().required('marks are required'),
+    subject: yup.string().required('subject is require'),
+    grade: yup.string().required('grade is reuired'),
   })
   .required();

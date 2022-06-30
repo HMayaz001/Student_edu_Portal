@@ -15,6 +15,7 @@ ReactDOM.render(
         <Routes>
           <Route path='/' element={<App />}></Route>
           <Route path='/AddStudent' element={<StudentFormContainer />}></Route>
+          <Route path='/EditStudent' element={<StudentFormContainer />}></Route>
         </Routes>
       </BrowserRouter>
     </Provider>

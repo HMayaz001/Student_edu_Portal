@@ -14,9 +14,16 @@ function* handleFetchStudents(data: any): Generator {
   yield put(handleFetchStudentsAction(students));
 }
 
+function* handleEditStudents(data: any): Generator {
+  const students = (yield call(apiCaller, 'PUT', `students/${data._id}`), data.meta.data) as IStudent[];
+
+  yield put(handleFetchStudentsAction(students));
+}
+
 function* studentSaga() {
   yield takeLatest(StudentActionTypes.ADD_STUDENT, handleAddStudent);
   yield takeLatest(StudentActionTypes.FETCH_STUDENTS, handleFetchStudents);
+  yield takeLatest(StudentActionTypes.EDIT_STUDENT, handleEditStudents);
 }
 
 export default studentSaga;

@@ -10,9 +10,16 @@ const StudentFormContainer = () => {
 
   const dispatchToProps = {
     AddStudentData: useCallback((data: any) => dispatch(AddStudentData(data)), [dispatch]),
+    editStudentData: useCallback((data: any) => dispatch(AddStudentData(data)), [dispatch]),
   };
 
   return <AddStudent {...dispatchToProps} />;
 };
+
+// const dispatchToProps = {
+//   editStudentData: useCallback((data: any) => dispatch(AddStudentData(data)), [dispatch]),
+// };
+
+// return <AddStudent {...dispatchToProps} />;
 
 export default StudentFormContainer;

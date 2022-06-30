@@ -1,28 +1,34 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 import Select from 'react-select';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { Input, Button, Autocomplete, TextField } from '@mui/material';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { studentFormSchema } from './validation';
 import GradeData from '../../utils/data/GradeData';
 import SubjectData from '../../utils/data/SubjectData';
 import * as yup from 'yup';
-import { IStudent } from '../../state/ducks/student/types';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { IStudent, IStudentForm } from '../../state/ducks/student/types';
 import './formStyle.css';
-import { useDispatch } from 'react-redux';
 import moment from 'moment';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 type IProps = {
-  AddStudentData: (data: IStudent) => void;
+  AddStudentData: (data: IStudentForm) => void;
 };
 
 const AddStudent = ({ AddStudentData }: IProps) => {
-  const { control, handleSubmit, setValue, register } = useForm<IStudent>();
+  const {
+    control,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<IStudentForm>({
+    resolver: yupResolver(studentFormSchema),
+  });
   const navigate = useNavigate();
 
-  const submitHandler: SubmitHandler<IStudent> = (data) => {
+  const submitHandler: SubmitHandler<IStudentForm> = (data) => {
     let student = {
       ...data,
       date: moment().toISOString(),
@@ -34,34 +40,51 @@ const AddStudent = ({ AddStudentData }: IProps) => {
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
       <label>Name</label>
-      <Controller render={({ field }) => <Input {...field} />} name='name' control={control} defaultValue='' rules={{}} />
+      <Controller render={({ field }) => <Input {...field} />} name='name' control={control} />
+      <p>{errors.name?.message}</p>
       <label>Marks</label>
       <Controller render={({ field }) => <Input {...field} />} name='marks' control={control} />
-
+      <p>{errors.marks?.message}</p>
       <label>Subject</label>
 
-      <Autocomplete
-        id='subject'
-        options={SubjectData}
-        sx={{ width: 300 }}
-        getOptionLabel={(option) => option.label}
-        onChange={(e, newValue: any) => {
-          setValue('subject', newValue.value);
-        }}
-        renderInput={(params: any) => <TextField {...params} label='Subject' />}
+      <Controller
+        render={({ field }) => (
+          <Autocomplete
+            {...field}
+            id='subject'
+            options={SubjectData}
+            getOptionLabel={(option) => option.label}
+            onChange={(e, newValue: any) => {
+              field.onChange(newValue.value);
+            }}
+            renderInput={(params: any) => <TextField {...params} label='Subject' />}
+          />
+        )}
+        name='subject'
+        control={control}
       />
 
-      <label>Grads</label>
-      <Autocomplete
-        id='grade'
-        options={GradeData}
-        sx={{ width: 300 }}
-        getOptionLabel={(option) => option.label}
-        onChange={(e, newValue: any) => {
-          setValue('grade', newValue.value);
-        }}
-        renderInput={(params: any) => <TextField {...params} label='Grade' />}
+      <p>{errors.subject?.message}</p>
+
+      <label>Grade</label>
+      <Controller
+        render={({ field }) => (
+          <Autocomplete
+            {...field}
+            id='grade'
+            options={GradeData}
+            getOptionLabel={(option) => option.label}
+            onChange={(e, newValue: any) => {
+              field.onChange(newValue.value);
+            }}
+            renderInput={(params: any) => <TextField {...params} label='Grade' />}
+          />
+        )}
+        name='grade'
+        control={control}
       />
+
+      <p>{errors.grade?.message}</p>
 
       <Button variant='contained' color='success' type='submit'>
         Add Record

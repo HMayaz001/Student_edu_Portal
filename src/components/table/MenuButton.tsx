@@ -3,20 +3,36 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-
-const options = ['Edit', 'Delete'];
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { IStudent, IStudentForm } from '../../state/ducks/student/types';
+import { AddStudentData, editStudentData } from '../../state/ducks/student/actions';
+import moment from 'moment';
 
 const ITEM_HEIGHT = 48;
 
-function MenuButton() {
-  const [anchorEl, setAnchorEl] = useState<any>(null);
+type IProps = {
+  editStudentData: (data: IStudentForm) => any;
+};
+const MenuButton = ({ editStudentData }: any) => {
+  const [anchorEl, setAnchorEl] = useState<any>();
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleEdit = (data: any) => {
+    let student = {
+      ...data,
+      date: moment().toISOString(),
+    };
     setAnchorEl(null);
+    AddStudentData(student);
+    navigate('/AddStudent');
   };
+
+  const handleDelete = () => {};
 
   return (
     <div>
@@ -37,7 +53,7 @@ function MenuButton() {
         }}
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={handleClick}
         PaperProps={{
           style: {
             maxHeight: ITEM_HEIGHT * 4.5,
@@ -45,14 +61,11 @@ function MenuButton() {
           },
         }}
       >
-        {options.map((option: string) => (
-          <MenuItem key={option} onClick={handleClose}>
-            {option}
-          </MenuItem>
-        ))}
+        <MenuItem onClick={handleEdit}>{'Edit'}</MenuItem>
+        <MenuItem onClick={handleDelete}>{'Delete'}</MenuItem>
       </Menu>
     </div>
   );
-}
+};
 
 export default MenuButton;

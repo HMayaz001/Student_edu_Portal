@@ -7,13 +7,21 @@ export type ApiResponse = Record<string, any>;
 export interface IStudent extends ApiResponse {
   name: string;
   marks: number;
-  subject: any;
+  subject: string;
   grade: string;
+}
+
+export interface IStudentForm {
+  name: string;
+  marks: number;
+  subject: { value: string; label: string };
+  grade: { value: string; label: string };
 }
 
 export const StudentActionTypes = {
   ADD_STUDENT: 'students/ADD_STUDENT',
   FETCH_STUDENTS: 'students/FETCH_STUDENTS',
+  EDIT_STUDENT: 'students/EDIT_STUDENT',
 };
 
 export interface IDispatchToStudents {
