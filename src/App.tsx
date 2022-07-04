@@ -17,12 +17,6 @@ function App() {
     navigate('/AddStudent');
   };
 
-  //const [data, setData] = useState(null);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {};
-  // });
-
   return (
     <>
       <Navbar />
