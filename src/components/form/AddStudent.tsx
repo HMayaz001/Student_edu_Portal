@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { Input, Button, Autocomplete, TextField } from '@mui/material';
@@ -10,14 +10,19 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { IStudent, IStudentForm } from '../../state/ducks/student/types';
 import './formStyle.css';
 import moment from 'moment';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { AddStudentData, editStudentData, singleStudentData } from '../../state/ducks/student/actions';
 
 type IProps = {
   AddStudentData: (data: IStudentForm) => void;
+  editStudentData: (data: IStudent | IStudentForm) => void;
 };
 
 const AddStudent = ({ AddStudentData }: IProps) => {
+  const navigate = useNavigate();
+  const { student_id } = useParams();
+  const [isEdit, setIsEdit] = useState(false);
+
   const {
     control,
     handleSubmit,
@@ -26,16 +31,28 @@ const AddStudent = ({ AddStudentData }: IProps) => {
   } = useForm<IStudentForm>({
     resolver: yupResolver(studentFormSchema),
   });
-  const navigate = useNavigate();
 
   const submitHandler: SubmitHandler<IStudentForm> = (data) => {
     let student = {
       ...data,
       date: moment().toISOString(),
     };
-    AddStudentData(student);
-    navigate('/');
+
+    if (!isEdit) {
+      AddStudentData(student);
+      navigate('/');
+    } else {
+      singleStudentData();
+      editStudentData(student);
+      navigate('/');
+    }
   };
+
+  useEffect(() => {
+    if (student_id) {
+      setIsEdit(true);
+    }
+  }, []);
 
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
@@ -46,7 +63,6 @@ const AddStudent = ({ AddStudentData }: IProps) => {
       <Controller render={({ field }) => <Input {...field} />} name='marks' control={control} />
       <p>{errors.marks?.message}</p>
       <label>Subject</label>
-
       <Controller
         render={({ field }) => (
           <Autocomplete
@@ -63,9 +79,7 @@ const AddStudent = ({ AddStudentData }: IProps) => {
         name='subject'
         control={control}
       />
-
       <p>{errors.subject?.message}</p>
-
       <label>Grade</label>
       <Controller
         render={({ field }) => (
@@ -83,12 +97,16 @@ const AddStudent = ({ AddStudentData }: IProps) => {
         name='grade'
         control={control}
       />
-
       <p>{errors.grade?.message}</p>
-
-      <Button variant='contained' color='success' type='submit'>
-        Add Record
-      </Button>
+      {isEdit ? (
+        <Button variant='contained' color='success' type='submit'>
+          Edit Record
+        </Button>
+      ) : (
+        <Button variant='contained' color='success' type='submit'>
+          Add Record
+        </Button>
+      )}
     </form>
   );
 };

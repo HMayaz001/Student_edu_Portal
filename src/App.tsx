@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button as MUIButton, Grid, Icon } from '@mui/material';
 import Navbar from './components/layout/Navbar';
 import StudentSummary from './components/layout/StudentSummary';
@@ -16,6 +16,12 @@ function App() {
   const handleClick = async () => {
     navigate('/AddStudent');
   };
+
+  //const [data, setData] = useState(null);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {};
+  // });
 
   return (
     <>

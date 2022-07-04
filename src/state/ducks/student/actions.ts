@@ -13,9 +13,15 @@ export const fetchStudentData = () =>
     route: '/students',
   });
 
+export const singleStudentData = () =>
+  action(StudentActionTypes.FETCH_STUDENTS, [], {
+    method: 'get',
+    route: '/students',
+  });
+
 export const editStudentData = (data: any) =>
   action(StudentActionTypes.ADD_STUDENT, [], {
     method: 'put',
-    route: '/students',
+    route: `/students`,
     data,
   });

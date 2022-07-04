@@ -63,7 +63,7 @@ export default function StudentTable({ list, fetchStudentData }: IProps) {
               </TableCell>
               <TableCell align='right'>{dateFormat(row.date)}</TableCell>
               <TableCell align='right'>
-                <MenuButton />
+                <MenuButton id={row._id} />
               </TableCell>
             </TableRow>
           ))}
