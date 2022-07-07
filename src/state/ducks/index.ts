@@ -3,7 +3,7 @@ import { all } from 'redux-saga/effects';
 import studentReducer from './student/reducers';
 import studentSaga from './student/sagas';
 import { Action, PayloadAction, TypeConstant, EmptyAction } from 'typesafe-actions';
-import { IStudentState, StudentState } from './student/types';
+import { IStudentState } from './student/types';
 
 export interface IApplicationState {
   student: IStudentState;

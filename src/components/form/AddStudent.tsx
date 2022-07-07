@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import Select from 'react-select';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { Input, Button, Autocomplete, TextField } from '@mui/material';
 import { studentFormSchema } from './validation';
 import GradeData from '../../utils/data/GradeData';
 import SubjectData from '../../utils/data/SubjectData';
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { IStudent, IStudentForm } from '../../state/ducks/student/types';
 import './formStyle.css';
 import moment from 'moment';
 import { useNavigate, useParams } from 'react-router-dom';
 type IProps = {
-  oneList: IStudent;
+  oneList: IStudentForm;
   AddStudentData: (data: IStudentForm) => void;
   singleStudentData: (data: any) => void;
   editStudentData: (data: IStudent | IStudentForm) => void;
@@ -26,18 +24,15 @@ const AddStudent = ({ oneList, AddStudentData, singleStudentData, editStudentDat
   const {
     control,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm<IStudentForm>({
     resolver: yupResolver(studentFormSchema),
+    defaultValues: oneList,
   });
-
-  const [student, setStudent] = useState<IStudent>();
 
   useEffect(() => {
     if (isEdit) {
       singleStudentData(student_id);
-      setStudent(oneList);
     }
   }, [isEdit]);
 
@@ -66,7 +61,7 @@ const AddStudent = ({ oneList, AddStudentData, singleStudentData, editStudentDat
   return (
     <form onSubmit={handleSubmit(SubmitHandle)}>
       <label>Name</label>
-      <Controller render={({ field }) => <Input {...field} />} name='name' control={control} />
+      <Controller render={({ field }) => <Input {...field} />} name='name' control={control} defaultValue='Enter your name' />
       <p>{errors.name?.message}</p>
       <label>Marks</label>
       <Controller render={({ field }) => <Input {...field} />} name='marks' control={control} />
@@ -82,7 +77,7 @@ const AddStudent = ({ oneList, AddStudentData, singleStudentData, editStudentDat
             onChange={(e, newValue: any) => {
               field.onChange(newValue.value);
             }}
-            renderInput={(params: any) => <TextField {...params} label='Subject' />}
+            renderInput={(params: any) => <TextField {...params} label='Select subject' />}
           />
         )}
         name='subject'
@@ -100,7 +95,7 @@ const AddStudent = ({ oneList, AddStudentData, singleStudentData, editStudentDat
             onChange={(e, newValue: any) => {
               field.onChange(newValue.value);
             }}
-            renderInput={(params: any) => <TextField {...params} label='Grade' />}
+            renderInput={(params: any) => <TextField {...params} label='Select grade' />}
           />
         )}
         name='grade'

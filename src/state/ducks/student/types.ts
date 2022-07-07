@@ -4,7 +4,7 @@ export interface IStudentState {
   list: IStudent[];
 }
 export interface StudentState {
-  oneList: IStudent;
+  oneList: IStudentForm;
 }
 export interface IStudent {
   name: string;

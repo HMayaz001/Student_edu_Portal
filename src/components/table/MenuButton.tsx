@@ -4,7 +4,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useNavigate } from 'react-router-dom';
-import { IStudent, IStudentForm } from '../../state/ducks/student/types';
 
 const ITEM_HEIGHT = 48;
 
