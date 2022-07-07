@@ -3,19 +3,21 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-
-const options = ['Edit', 'Delete'];
+import { useNavigate } from 'react-router-dom';
 
 const ITEM_HEIGHT = 48;
 
-function MenuButton() {
-  const [anchorEl, setAnchorEl] = useState<any>(null);
+const MenuButton = ({ student_id }: any) => {
+  const [anchorEl, setAnchorEl] = useState<any>();
   const open = Boolean(anchorEl);
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+
+  const navigate = useNavigate();
+  const handleEdit = () => {
+    navigate(`/AddStudent/${student_id}`);
   };
 
   return (
@@ -37,7 +39,7 @@ function MenuButton() {
         }}
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={handleClick}
         PaperProps={{
           style: {
             maxHeight: ITEM_HEIGHT * 4.5,
@@ -45,14 +47,10 @@ function MenuButton() {
           },
         }}
       >
-        {options.map((option: string) => (
-          <MenuItem key={option} onClick={handleClose}>
-            {option}
-          </MenuItem>
-        ))}
+        <MenuItem onClick={handleEdit}>{'Edit'}</MenuItem>
       </Menu>
     </div>
   );
-}
+};
 
 export default MenuButton;

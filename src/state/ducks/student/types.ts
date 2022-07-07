@@ -1,19 +1,32 @@
 import { IReducerAction } from '..';
-
 export interface IStudentState {
-  readonly list: IStudent[];
+  [x: string]: any;
+  list: IStudent[];
 }
-export type ApiResponse = Record<string, any>;
-export interface IStudent extends ApiResponse {
+export interface StudentState {
+  oneList: IStudentForm;
+}
+export interface IStudent {
   name: string;
-  marks: string;
-  subject: number;
+  marks: number;
+  subject: string;
   grade: string;
   date: string;
+  _id: string;
+}
+
+export interface IStudentForm {
+  name: string;
+  marks: number;
+  subject: { value: string; label: string };
+  grade: { value: string; label: string };
 }
 
 export const StudentActionTypes = {
+  ADD_STUDENT: 'students/ADD_STUDENT',
   FETCH_STUDENTS: 'students/FETCH_STUDENTS',
+  SINGLE_STUDENT: 'students/SINGLE_STUDENT',
+  EDIT_STUDENT: 'students/EDIT_STUDENT',
 };
 
 export interface IDispatchToStudents {

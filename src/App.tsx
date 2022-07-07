@@ -1,12 +1,20 @@
-import React from 'react';
-import { Button, Grid, Icon } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Button as MUIButton, Grid, Icon } from '@mui/material';
 import Navbar from './components/layout/Navbar';
 import StudentSummary from './components/layout/StudentSummary';
 import StudentListContainer from './containers/StudentTableContainer';
-// import Forms from './components/Forms';
+import { useNavigate } from 'react-router-dom';
+
 import './App.css';
+import Button from './components/layout/Button';
 
 function App() {
+  let navigate = useNavigate();
+
+  const handleClick = async () => {
+    navigate('/AddStudent');
+  };
+
   return (
     <>
       <Navbar />
@@ -14,26 +22,8 @@ function App() {
         <Grid item xs={6}>
           Student Summary
         </Grid>
-        <Grid item>
-          <Button
-            variant='outlined'
-            style={{
-              borderRadius: 5,
-              backgroundColor: '#ffffff',
-              padding: '4px 15px',
-              font: 'Poppins normal 500 14px',
-              lineHeight: ' 21px',
-              margin: '12px',
-              fontSize: '10px',
-              color: '#343744',
-            }}
-          >
-            {'+'}
-            Add Data
-          </Button>
-        </Grid>
+        <Button onClick={handleClick} />
       </Grid>
-
       <Grid container direction='row' justifyContent='space-around' alignItems='center'>
         <Grid item xs={2}>
           <StudentSummary />
@@ -51,7 +41,6 @@ function App() {
           <StudentSummary />
         </Grid>
       </Grid>
-
       <StudentListContainer />
     </>
   );

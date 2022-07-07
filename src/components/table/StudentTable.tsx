@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { TableContainer, Table, TableHead, TableBody, TableCell, TableRow, Paper, Box } from '@mui/material';
-import { IStudent } from '../state/ducks/student/types';
+import { IStudent } from '../../state/ducks/student/types';
 import MenuButton from './MenuButton';
-import { dateFormat } from '../utils/helper';
+import { dateFormat } from '../../utils/helper';
 
 type IProps = {
   list: IStudent[];
@@ -10,8 +10,11 @@ type IProps = {
 };
 
 export default function StudentTable({ list, fetchStudentData }: IProps) {
+  const [students, setStudents] = useState<IStudent[]>();
+
   useEffect(() => {
     fetchStudentData();
+    setStudents(list);
   }, [fetchStudentData]);
 
   return (
@@ -28,7 +31,7 @@ export default function StudentTable({ list, fetchStudentData }: IProps) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {list.map((row: IStudent) => (
+          {students?.map((row: IStudent) => (
             <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell align='left'>{row.name}</TableCell>
               <TableCell align='right'>{row.marks}</TableCell>
@@ -36,7 +39,7 @@ export default function StudentTable({ list, fetchStudentData }: IProps) {
               <TableCell align='center'>
                 <Box
                   sx={
-                    row.grade === 'A'
+                    row?.grade === 'A'
                       ? {
                           color: '#febd45',
                           background: '#FFF7F5',
@@ -60,7 +63,7 @@ export default function StudentTable({ list, fetchStudentData }: IProps) {
               </TableCell>
               <TableCell align='right'>{dateFormat(row.date)}</TableCell>
               <TableCell align='right'>
-                <MenuButton />
+                <MenuButton student_id={row._id} />
               </TableCell>
             </TableRow>
           ))}
