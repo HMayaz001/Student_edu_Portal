@@ -11,14 +11,14 @@ import { IStudent, IStudentForm } from '../../state/ducks/student/types';
 import './formStyle.css';
 import moment from 'moment';
 import { useNavigate, useParams } from 'react-router-dom';
-import { AddStudentData, editStudentData, singleStudentData } from '../../state/ducks/student/actions';
-
 type IProps = {
+  oneList: IStudent;
   AddStudentData: (data: IStudentForm) => void;
+  singleStudentData: (data: any) => void;
   editStudentData: (data: IStudent | IStudentForm) => void;
 };
 
-const AddStudent = ({ AddStudentData }: IProps) => {
+const AddStudent = ({ oneList, AddStudentData, singleStudentData, editStudentData }: IProps) => {
   const navigate = useNavigate();
   const { student_id } = useParams();
   const [isEdit, setIsEdit] = useState(false);
@@ -32,30 +32,39 @@ const AddStudent = ({ AddStudentData }: IProps) => {
     resolver: yupResolver(studentFormSchema),
   });
 
-  const submitHandler: SubmitHandler<IStudentForm> = (data) => {
-    let student = {
-      ...data,
-      date: moment().toISOString(),
-    };
+  const [student, setStudent] = useState<IStudent>();
 
-    if (!isEdit) {
-      AddStudentData(student);
-      navigate('/');
-    } else {
-      singleStudentData();
-      editStudentData(student);
-      navigate('/');
+  useEffect(() => {
+    if (isEdit) {
+      singleStudentData(student_id);
+      setStudent(oneList);
     }
-  };
+  }, [isEdit]);
 
   useEffect(() => {
     if (student_id) {
       setIsEdit(true);
     }
-  }, []);
+  }, [student_id]);
+
+  const SubmitHandle: SubmitHandler<IStudentForm> = (data) => {
+    let student = {
+      ...data,
+      date: moment().toISOString(),
+    };
+
+    if (isEdit) {
+      editStudentData(student);
+      navigate('/');
+    } else {
+      AddStudentData(student);
+
+      navigate('/');
+    }
+  };
 
   return (
-    <form onSubmit={handleSubmit(submitHandler)}>
+    <form onSubmit={handleSubmit(SubmitHandle)}>
       <label>Name</label>
       <Controller render={({ field }) => <Input {...field} />} name='name' control={control} />
       <p>{errors.name?.message}</p>

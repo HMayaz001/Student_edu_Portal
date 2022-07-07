@@ -39,7 +39,7 @@ export default function StudentTable({ list, fetchStudentData }: IProps) {
               <TableCell align='center'>
                 <Box
                   sx={
-                    row?.grads === 'A'
+                    row?.grade === 'A'
                       ? {
                           color: '#febd45',
                           background: '#FFF7F5',
@@ -63,7 +63,7 @@ export default function StudentTable({ list, fetchStudentData }: IProps) {
               </TableCell>
               <TableCell align='right'>{dateFormat(row.date)}</TableCell>
               <TableCell align='right'>
-                <MenuButton id={row._id} />
+                <MenuButton student_id={row._id} />
               </TableCell>
             </TableRow>
           ))}

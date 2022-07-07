@@ -5,11 +5,10 @@ import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useNavigate } from 'react-router-dom';
 import { IStudent, IStudentForm } from '../../state/ducks/student/types';
-import moment from 'moment';
 
 const ITEM_HEIGHT = 48;
 
-const MenuButton = ({ id }: any) => {
+const MenuButton = ({ student_id }: any) => {
   const [anchorEl, setAnchorEl] = useState<any>();
   const open = Boolean(anchorEl);
 
@@ -19,7 +18,7 @@ const MenuButton = ({ id }: any) => {
 
   const navigate = useNavigate();
   const handleEdit = () => {
-    navigate(`/AddStudent/${id}`);
+    navigate(`/AddStudent/${student_id}`);
   };
 
   return (

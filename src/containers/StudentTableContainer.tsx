@@ -7,7 +7,7 @@ import { IStudentState } from '../state/ducks/student/types';
 
 const StudentListContainer = () => {
   const dispatch = useDispatch();
-
+  debugger;
   const stateToProps: IStudentState = useSelector(({ student }: IApplicationState) => ({
     list: student.list,
   }));

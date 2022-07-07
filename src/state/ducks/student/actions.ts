@@ -1,7 +1,7 @@
 import { action } from 'typesafe-actions';
-import { IStudent, StudentActionTypes } from './types';
+import { IStudent, IStudentForm, StudentActionTypes } from './types';
 
-export const AddStudentData = (data: any) =>
+export const AddStudentData = (data: IStudent) =>
   action(StudentActionTypes.ADD_STUDENT, [], {
     method: 'post',
     route: '/students',
@@ -13,15 +13,16 @@ export const fetchStudentData = () =>
     route: '/students',
   });
 
-export const singleStudentData = () =>
-  action(StudentActionTypes.FETCH_STUDENTS, [], {
+export const singleStudentData = (data: any) =>
+  action(StudentActionTypes.SINGLE_STUDENT, [], {
     method: 'get',
     route: '/students',
+    data,
   });
 
-export const editStudentData = (data: any) =>
+export const editStudentData = (data: IStudentForm) =>
   action(StudentActionTypes.ADD_STUDENT, [], {
     method: 'put',
-    route: `/students`,
+    route: '/students',
     data,
   });

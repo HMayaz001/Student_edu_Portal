@@ -1,18 +1,21 @@
 import { IReducerAction } from '..';
-
 export interface IStudentState {
+  [x: string]: any;
   list: IStudent[];
 }
-export type ApiResponse = Record<string, any>;
-export interface IStudent extends ApiResponse {
+export interface StudentState {
+  oneList: IStudent;
+}
+export interface IStudent {
   name: string;
   marks: number;
   subject: string;
   grade: string;
+  date: string;
+  _id: string;
 }
 
 export interface IStudentForm {
-  [x: string]: any;
   name: string;
   marks: number;
   subject: { value: string; label: string };
